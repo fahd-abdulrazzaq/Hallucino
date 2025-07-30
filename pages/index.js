@@ -1,4 +1,3 @@
-// pages/index.js
 import { useState } from 'react';
 import { hallucinations } from '../data/hallucinations';
 
@@ -9,6 +8,7 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const pool = hallucinations[mode];
     const random = pool[Math.floor(Math.random() * pool.length)];
     setResult(random);
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main style={{ maxWidth: 600, margin: 'auto', padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>🤯 Hallucinations</h1>
-      <p>Type a question and let the app give you a totally made-up answer.</p>
+      <p>Type a question and get a totally made-up answer.</p>
 
       <form onSubmit={handleSubmit} style={{ marginTop: '1rem' }}>
         <input
@@ -26,6 +26,7 @@ export default function Home() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           style={{ padding: '0.5rem', width: '100%' }}
+          required
         />
 
         <div style={{ marginTop: '1rem' }}>
